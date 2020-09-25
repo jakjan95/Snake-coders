@@ -16,3 +16,7 @@ void Board::drawBoard() const {
         std::cout << '\n';
     }
 }
+
+void Board::update() {
+    map_[snake_.getY()][snake_.getX()] = ' ';
+}

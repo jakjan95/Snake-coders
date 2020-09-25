@@ -1,9 +1,9 @@
 #include "Snake.hpp"
 
-void Snake::moveRight() {
+void Snake::turnRight() {
     dir_ = Direction::LEFT;
 }
 
-void Snake::moveLeft() {
+void Snake::turnLeft() {
     dir_ = Direction::RIGHT;
 }
