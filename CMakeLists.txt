@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 project(Snake)
+enable_testing()
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -11,6 +12,9 @@ set(SRC
     Game.cpp
     Food.cpp
     Snake.cpp)
+
+set(TEST_SRC
+    Snake-ut.cpp)
 
 #####################################################################
 # Download and unpack googletest at configure time
@@ -50,3 +54,11 @@ add_executable(${PROJECT_NAME} main.cpp)
 target_compile_options(${PROJECT_NAME} PRIVATE ${FLAGS})
 target_link_libraries(${PROJECT_NAME} PRIVATE ${PROJECT_NAME}-lib sfml-graphics)
 target_link_options(${PROJECT_NAME} PRIVATE -fsanitize=address -fsanitize=undefined)
+
+add_executable(${PROJECT_NAME}-ut ${TEST_SRC})
+target_compile_options(${PROJECT_NAME}-ut PRIVATE ${FLAGS})
+target_link_libraries(${PROJECT_NAME}-ut PUBLIC gtest_main)
+target_link_libraries(${PROJECT_NAME}-ut PRIVATE ${PROJECT_NAME}-lib sfml-graphics)
+target_link_options(${PROJECT_NAME}-ut PRIVATE -fsanitize=address -fsanitize=undefined)
+
+add_test(NAME Snake-test COMMAND ${PROJECT_NAME}-ut)
