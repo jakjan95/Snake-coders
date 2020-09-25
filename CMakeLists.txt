@@ -4,6 +4,14 @@ project(Snake)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+set(FLAGS -Wall -Werror -Wextra -Wconversion -pedantic)
+
+set(SRC
+    Board.cpp
+    Game.cpp
+    Food.cpp
+    Snake.cpp)
+
 #####################################################################
 # Download and unpack googletest at configure time
 configure_file(CMakeLists.txt.in googletest-download/CMakeLists.txt)
@@ -31,4 +39,14 @@ RESULT_VARIABLE result
     EXCLUDE_FROM_ALL)
 #####################################################################
 
+add_subdirectory(SFML)
+
+add_library(${PROJECT_NAME}-lib ${SRC})
+target_compile_options(${PROJECT_NAME}-lib PRIVATE ${FLAGS})
+target_link_libraries(${PROJECT_NAME}-lib PRIVATE sfml-graphics)
+target_link_options(${PROJECT_NAME}-lib PRIVATE -fsanitize=address -fsanitize=undefined)
+
 add_executable(${PROJECT_NAME} main.cpp)
+target_compile_options(${PROJECT_NAME} PRIVATE ${FLAGS})
+target_link_libraries(${PROJECT_NAME} PRIVATE ${PROJECT_NAME}-lib sfml-graphics)
+target_link_options(${PROJECT_NAME} PRIVATE -fsanitize=address -fsanitize=undefined)
