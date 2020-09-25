@@ -4,7 +4,7 @@
 
 Board::Board() {
     for (auto& row : map_) {
-        row.fill('w');
+        row.fill('.');
     }
 }
 
@@ -17,6 +17,14 @@ void Board::drawBoard() const {
     }
 }
 
+void Board::clear() {
+    for (auto& row : map_) {
+        row.fill('.');
+    }
+}
+
 void Board::update() {
+    snake_.move();
+    clear();
     map_[snake_.getY()][snake_.getX()] = ' ';
 }

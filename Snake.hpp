@@ -17,6 +17,7 @@ public:
 
     void turnRight();
     void turnLeft();
+    void move();
 
     size_t getX() const { return coordinates_.x_; }
     size_t getY() const { return coordinates_.y_; }

@@ -13,6 +13,7 @@ public:
     void drawBoard() const;
 
 private:
+    void clear();
     std::array<std::array<char, screenWidth>, screenHeight> map_;
 
     Snake snake_;

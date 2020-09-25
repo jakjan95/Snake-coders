@@ -45,7 +45,7 @@ RESULT_VARIABLE result
 
 add_library(${PROJECT_NAME}-lib ${SRC})
 target_compile_options(${PROJECT_NAME}-lib PRIVATE ${FLAGS})
-target_link_options(${PROJECT_NAME}-lib PRIVATE -fsanitize=address -fsanitize=undefined)
+target_link_options(${PROJECT_NAME}-lib PRIVATE -fsanitize=address -fsanitize=undefined -pthread)
 
 add_executable(${PROJECT_NAME} main.cpp)
 target_compile_options(${PROJECT_NAME} PRIVATE ${FLAGS})
