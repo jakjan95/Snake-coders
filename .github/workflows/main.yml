@@ -9,8 +9,8 @@ jobs:
     steps:
     - uses: actions/checkout@v1
 
-    - name: Download submodule
-      run: git submodule update --init --recursive
+    - name: Download sfml
+      run: sudo apt-get install libsfml-dev
     - name: Create build folder
       run: mkdir build
     - name: Compile
