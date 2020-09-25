@@ -43,8 +43,6 @@ RESULT_VARIABLE result
     EXCLUDE_FROM_ALL)
 #####################################################################
 
-add_subdirectory(SFML)
-
 add_library(${PROJECT_NAME}-lib ${SRC})
 target_compile_options(${PROJECT_NAME}-lib PRIVATE ${FLAGS})
 target_link_libraries(${PROJECT_NAME}-lib PRIVATE sfml-graphics)
