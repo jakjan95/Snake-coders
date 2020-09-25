@@ -1,4 +1,7 @@
+#include "Board.hpp"
 
 int main() {
-        return 0;
+    Board board;
+    board.drawBoard();
+    return 0;
 }

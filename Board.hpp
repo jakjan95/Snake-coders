@@ -1,14 +1,14 @@
 #pragma once
 #include <array>
 
-constexpr int screenWidth = 600;
-constexpr int screenHeight = 400;
+constexpr int screenWidth = 20;
+constexpr int screenHeight = 20;
 
 class Board {
 public:
     Board();
-    void drawBoard();
+    void drawBoard() const;
 
 private:
     std::array<std::array<char, screenWidth>, screenHeight> map_;
-}
+};
