@@ -1,6 +1,8 @@
 #pragma once
 #include <iostream>
 
+#include "Point.hpp"
+
 enum class Direction {
     UP,
     DOWN,
@@ -11,16 +13,15 @@ enum class Direction {
 class Snake {
 public:
     Snake()
-        : dir_(Direction::LEFT) {}
+        : dir_(Direction::LEFT), coordinates_(5, 5) {}
 
     void turnRight();
     void turnLeft();
 
-    std::size_t getX() const { return x_; }
-    std::size_t getY() const { return y_; }
+    size_t getX() const { return coordinates_.x_; }
+    size_t getY() const { return coordinates_.y_; }
 
 private:
     Direction dir_;
-    std::size_t x_ = 5;
-    std::size_t y_ = 5;
+    Point coordinates_;
 };
