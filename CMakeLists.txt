@@ -45,18 +45,18 @@ RESULT_VARIABLE result
 
 add_library(${PROJECT_NAME}-lib ${SRC})
 target_compile_options(${PROJECT_NAME}-lib PRIVATE ${FLAGS})
-target_link_libraries(${PROJECT_NAME}-lib PRIVATE sfml-graphics)
+target_link_libraries(${PROJECT_NAME}-lib PRIVATE sfml-graphics sfml-window sfml-system)
 target_link_options(${PROJECT_NAME}-lib PRIVATE -fsanitize=address -fsanitize=undefined)
 
 add_executable(${PROJECT_NAME} main.cpp)
 target_compile_options(${PROJECT_NAME} PRIVATE ${FLAGS})
-target_link_libraries(${PROJECT_NAME} PRIVATE ${PROJECT_NAME}-lib sfml-graphics)
+target_link_libraries(${PROJECT_NAME} PRIVATE ${PROJECT_NAME}-lib sfml-graphics sfml-window sfml-system)
 target_link_options(${PROJECT_NAME} PRIVATE -fsanitize=address -fsanitize=undefined)
 
 add_executable(${PROJECT_NAME}-ut ${TEST_SRC})
 target_compile_options(${PROJECT_NAME}-ut PRIVATE ${FLAGS})
 target_link_libraries(${PROJECT_NAME}-ut PUBLIC gtest_main)
-target_link_libraries(${PROJECT_NAME}-ut PRIVATE ${PROJECT_NAME}-lib sfml-graphics)
+target_link_libraries(${PROJECT_NAME}-ut PRIVATE ${PROJECT_NAME}-lib sfml-graphics sfml-window sfml-system)
 target_link_options(${PROJECT_NAME}-ut PRIVATE -fsanitize=address -fsanitize=undefined)
 
 add_test(NAME Snake-test COMMAND ${PROJECT_NAME}-ut)
