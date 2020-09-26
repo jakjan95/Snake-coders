@@ -45,5 +45,8 @@ bool Board::update() {
     }
     clear();
     map_[snake_.getY()][snake_.getX()] = snakeSquare;
+    for (int i = 0; i < snake_.getPiecesSize(); i++) {
+        map_[snake_.getPiece(i).y_][snake_.getPiece(i).x_] = snakeSquare;
+    }
     return false;
 }

@@ -20,14 +20,14 @@ public:
         }
     }
 
+private:
+    void clear();
+    std::array<std::array<char, screenWidth>, screenHeight> map_;
+
     bool checkDirections(Direction newDir) {
         return ((newDir == Direction::DOWN && snake_.getDirection() != Direction::UP) ||
                 (newDir == Direction::UP && snake_.getDirection() != Direction::DOWN) ||
                 (newDir == Direction::RIGHT && snake_.getDirection() != Direction::LEFT) ||
                 (newDir == Direction::LEFT && snake_.getDirection() != Direction::RIGHT));
     }
-
-private:
-    void clear();
-    std::array<std::array<char, screenWidth>, screenHeight> map_;
 };
