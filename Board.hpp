@@ -1,4 +1,5 @@
 #pragma once
+#include <SFML/Graphics.hpp>
 #include <array>
 
 #include "Snake.hpp"
@@ -10,8 +11,9 @@ class Board {
 public:
     Board();
     bool update();
-    void drawBoard() const;
+    void drawBoard(sf::RenderWindow& window) const;
     bool checkEdges();
+    void changeDirection(Direction newDir) { snake_.changeDirection(newDir); }
 
 private:
     void clear();

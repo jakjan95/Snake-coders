@@ -21,6 +21,7 @@ public:
 
     int getX() const { return coordinates_.x_; }
     int getY() const { return coordinates_.y_; }
+    void setDirection(Direction newDir) { dir_ = newDir; }
     Direction getDirection() { return dir_; }
     void changeDirection(Direction newDirection) { dir_ = newDirection; }
 

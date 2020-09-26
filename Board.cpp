@@ -10,12 +10,15 @@ Board::Board() {
     }
 }
 
-void Board::drawBoard() const {
-    for (const auto& row : map_) {
-        for (auto el : row) {
-            std::cout << el;
+void Board::drawBoard(sf::RenderWindow& window) const {
+    for (size_t y = 0; y < screenHeight; y++) {
+        for (size_t x = 0; x < screenWidth; x++) {
+            if (map_[y][x] == '#') {
+                sf::RectangleShape rect(sf::Vector2f(10, 10));
+                rect.setPosition(x * 10, y * 10);
+                window.draw(rect);
+            }
         }
-        std::cout << '\n';
     }
 }
 
