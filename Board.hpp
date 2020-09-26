@@ -9,8 +9,9 @@ constexpr int screenHeight = 20;
 class Board {
 public:
     Board();
-    void update();
+    bool update();
     void drawBoard() const;
+    bool checkEdges();
 
 private:
     void clear();

@@ -3,5 +3,7 @@
 class Game {
 public:
     Game();
-    void Update();
+
+private:
+    char key_;
 };

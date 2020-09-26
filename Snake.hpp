@@ -13,14 +13,16 @@ enum class Direction {
 class Snake {
 public:
     Snake()
-        : dir_(Direction::LEFT), coordinates_(5, 5) {}
+        : dir_(Direction::DOWN), coordinates_(5, 5) {}
 
     void turnRight();
     void turnLeft();
     void move();
 
-    size_t getX() const { return coordinates_.x_; }
-    size_t getY() const { return coordinates_.y_; }
+    int getX() const { return coordinates_.x_; }
+    int getY() const { return coordinates_.y_; }
+    Direction getDirection() { return dir_; }
+    void changeDirection(Direction newDirection) { dir_ = newDirection; }
 
 private:
     Direction dir_;

@@ -3,8 +3,8 @@
 #include <cstddef>
 
 struct Point {
-    Point(size_t x, size_t y)
+    Point(int x, int y)
         : x_(x), y_(y) {}
-    size_t x_;
-    size_t y_;
+    int x_;
+    int y_;
 };

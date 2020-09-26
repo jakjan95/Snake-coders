@@ -49,7 +49,7 @@ target_link_options(${PROJECT_NAME}-lib PRIVATE -fsanitize=address -fsanitize=un
 
 add_executable(${PROJECT_NAME} main.cpp)
 target_compile_options(${PROJECT_NAME} PRIVATE ${FLAGS})
-target_link_libraries(${PROJECT_NAME} PRIVATE ${PROJECT_NAME}-lib)
+target_link_libraries(${PROJECT_NAME} PRIVATE ${PROJECT_NAME}-lib sfml-graphics sfml-window sfml-system)
 target_link_options(${PROJECT_NAME} PRIVATE -fsanitize=address -fsanitize=undefined)
 
 add_executable(${PROJECT_NAME}-ut ${TEST_SRC})

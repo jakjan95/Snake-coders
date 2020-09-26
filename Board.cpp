@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+constexpr char snakeSquare = '#';
+
 Board::Board() {
     for (auto& row : map_) {
         row.fill('.');
@@ -23,8 +25,22 @@ void Board::clear() {
     }
 }
 
-void Board::update() {
+bool Board::checkEdges() {
+    if (snake_.getX() >= screenWidth ||
+        snake_.getX() < 0 ||
+        snake_.getY() >= screenHeight ||
+        snake_.getY() < 0) {
+        return true;
+    }
+    return false;
+}
+
+bool Board::update() {
     snake_.move();
+    if (checkEdges()) {
+        return true;
+    }
     clear();
-    map_[snake_.getY()][snake_.getX()] = ' ';
+    map_[snake_.getY()][snake_.getX()] = snakeSquare;
+    return false;
 }
